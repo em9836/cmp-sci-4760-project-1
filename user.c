@@ -7,6 +7,9 @@ This file should be compiled as a separated executable.
 #include <stdlib.h>
 #include <unistd.h>
 #include <ctype.h>
+#include <sys/wait.h>
+#include <errno.h>
 int main(int argc,char**argv){
+	printf(argc);
 	return 0;
 }
