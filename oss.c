@@ -41,7 +41,7 @@ int main(int argc,char**argv){
 				iter =  optarg;
 				break;
 			case '?':
-        printf("unknown option. %c\n", option);
+				printf("unknown option. %c\n", option);
 				break;
 		}
 
@@ -60,18 +60,17 @@ int main(int argc,char**argv){
 		char *cmd[] = {"./user", iter, NULL};
 		while (c < simul){
 			//launch new child process
-      
 			pid = fork();
       
 			if (pid == 0){
 				//run user.o
-        int state = execvp(cmd[0],cmd);
-        if (state == EXIT_SUCCESS){
+				int state = execvp(cmd[0],cmd);
+				if (state == EXIT_SUCCESS){
 					printf("OSS: [PID: %d] Success.\n", pid);
 					exit(EXIT_SUCCESS);
 				}else{
 					printf("OSS: [PID: %d] Failure.\n", pid);
-					exit(EXIT_SUCCESS);
+					exit(EXIT_FAILURE);
 				}
 
 				
