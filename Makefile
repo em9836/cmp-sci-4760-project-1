@@ -1,15 +1,29 @@
+# Compiler
 CC = gcc
+
+# Compiler flags (e.g., -Wall enables all warnings)
 CFLAGS = -Wall -g
-TARGET = oss user
-OBJS = $(SRCS:.c=.o)
 
-all: $(TARGET)
 
-$(TARGET): $(OBJS)
-	$(CC) $(CFLAGS) -o $(TARGET) $(OBJS)
+# source files
+SRC = user.c oss.c
+#object files
+OBJ = $(SRC:.c=.o)
 
-%.o: %.c
+OUTPUTS = user oss
+
+# target
+all: $(OUTPUTS)
+
+# build rules
+
+user: user.c
 	$(CC) $(CFLAGS) -c $< -o $@
+	echo Built user executable
+oss: oss.c
+	$(CC) $(CFLAGS) -c $< -o $@
+	echo Built oss executable
 
 clean:
-	rm -f $(TARGET) $(OBJS)
+	rm -f *.o $(OUTPUTS)
+	echo Cleaned
